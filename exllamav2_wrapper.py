@@ -178,8 +178,7 @@ class ExllamaWrapper:
             generated_tokens += 1
             streaming_callback(chunk)
             if eos or generated_tokens >= self.COMPLETE_MAX_NEW_TOKENS:
-                time_end = time.time()
-                time_total = time_end - time_begin
+                time_total = time.time() - time_begin
                 finishing_callback(generated_tokens, time_total)
                 break
 
@@ -216,7 +215,5 @@ class ExllamaWrapper:
             buffer += chunk
             if eos or generated_tokens == self.COMPLETE_MAX_NEW_TOKENS: break
 
-        time_end = time.time()
-        time_total = time_end - time_begin
-
+        time_total = time.time() - time_begin
         return buffer, generated_tokens, time_total
