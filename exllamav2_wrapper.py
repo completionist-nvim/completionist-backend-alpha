@@ -64,7 +64,7 @@ class ExllamaWrapper:
 
     def __prepare_cache(self):
         self.cache = ExLlamaV2Cache(self.model, lazy = True)
-        self.cache.max_seq_len = 2048
+        self.cache.max_seq_len = 4096
 
     def __load_model(self):
         self.model.load_autosplit(self.cache)
